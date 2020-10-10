@@ -1,0 +1,110 @@
+body{
+  margin: 0px
+}
+
+#main {
+  width: 100%;
+  height: 100%;
+}
+.navbar{
+  background-color: #273032;
+  width:100%;
+  height: 55px;
+}
+
+.flex-item-navbar{
+  display: flex;
+  height: 100%;
+  float: left;
+}
+
+#logo{
+  height:35px;
+  padding:10px;
+  margin-left: 10px;
+}
+
+.vertical-rule{
+  border: 1px solid;
+  border-color: #484D4F;
+  width: 0px;
+  height: 95%;
+}
+
+.text{
+  font-size:16px;
+  color: white;
+  font-family:Helvetica;
+}
+
+.nav-text{
+  margin-top: 18px;
+}
+
+.nav-text:hover{
+  cursor: pointer;
+}
+
+.my-account-text{
+  text-decoration:none;
+  margin-right: 30px;
+}
+
+#searchbar{
+  margin-left: 20px;
+  margin-right: 10px;
+  height: 35px;
+  width: 550px;
+}
+
+#submitbutton{
+  height:35px;
+  width:35px;
+  padding: 0px;
+}
+
+#cart-icon{
+  font-size:20px;
+  color:white;
+  margin-right:12px;
+  margin-top:18px
+}
+
+#sidebar{
+  position: absolute;
+  background-color: #EEEEEE;
+  width: 0px;
+  top:0; bottom:0; right:0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+}
+
+#sidebar-header{
+  height: 35px;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  background-color: #273052;
+}
+
+#close-sidebar-cross{
+  margin-right: 18px;
+  margin-top: 10px;
+  float: right;
+  color: white;
+  cursor: pointer;
+}
+
+#cart-checkout-element{
+  background-color: #E86125;
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  margin: 10px;
+  border-radius: 5px;
+  align-items: center;
+}

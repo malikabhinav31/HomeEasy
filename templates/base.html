@@ -1,0 +1,59 @@
+{% load static %}
+<html>
+  <head>
+    <title>Home Easy</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  </head>
+  <body>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"></link>
+    <div id="main">
+      {% block navbar %}
+        <div class="navbar" style="float: left;">
+          <div class="flex-item-navbar">
+            <a href="{% url 'index' %}"><img id="logo" src="{% static 'logo.png' %}"></a>
+            <div class="vertical-rule" style="margin-left: 10px;"></div>
+            <form style="padding:10px">
+              <input id="searchbar" type="text" placeholder="Search" />
+              <button id="submitbutton" type="submit"><i class='fas fa-search' style="font-size:100%;"></i></button>
+            </form>
+          </div>
+          <div class="flex-item-navbar" style="float: right;">
+            {% if user.is_authenticated %}
+              <div id="account-dropdown">
+                <div class="text nav-text my-account-text">{{ user.username }}</div>
+                <div id="account-dropdown-menu">
+                  <a href="">My orders</a>
+                  <a href="">Wallet</a>
+                  <a href="">Cashback</a>
+                </div>
+              </div>
+            {% else %}
+              <a class="text nav-text my-account-text" href="">Log In</a>
+            {% endif %}
+            <div class="vertical-rule" style="margin-right:20px"></div>
+            <div style="display: flex; margin-right:10px;">
+              <i id="cart-icon" class="fas fa-cart-arrow-down"></i>
+              <div class="text nav-text" onClick="openSideBar()">My Cart</div>
+            </div>
+          </div>
+        </div>
+      {% endblock navbar %}
+
+      {% block content %}
+      {% endblock content %}
+    </div>
+    {% block sidebar %}
+      <div id="sidebar">
+        <div id="sidebar-header">
+          <div class="text" style="margin-top:10px">My Cart (x items)</div>
+          <div id="close-sidebar-cross" onClick="closeSideBar()">X</div>
+        </div>
+        <div id="cart-checkout-element">
+          <div class="text">Proceed to Checkout</div>
+          <div class="text">{{ amount }}</div>
+        <div>
+      </div>
+    {% endblock sidebar %}
+    <script type="text/javascript" src="{% static 'javascript/base.js' %}"></script>
+  </body>
+</html>
