@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'catalog.apps.CatalogConfig',
+    'user.apps.UserConfig',
+    'address',
+    'catalog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "images"), os.path.join(BASE_DIR, "templates")]
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'user.User'
+LOGIN_REDIRECT_URL = ""
+LOGOUT_REDIRECT_URL = ""

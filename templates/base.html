@@ -3,6 +3,7 @@
   <head>
     <title>Home Easy</title>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <link rel="stylesheet" href="{% static 'css/base.css' %}"></link>
@@ -34,6 +35,9 @@
             <div style="display: flex; margin-right:10px;">
               <i id="cart-icon" class="fas fa-cart-arrow-down"></i>
               <div class="text nav-text" onClick="openSideBar()">My Cart</div>
+              {% if item_count %}
+                <span class="badge">{{item_count}}</span>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -44,14 +48,54 @@
     </div>
     {% block sidebar %}
       <div id="sidebar">
-        <div id="sidebar-header">
-          <div class="text" style="margin-top:10px">My Cart (x items)</div>
-          <div id="close-sidebar-cross" onClick="closeSideBar()">X</div>
+        <div>
+          <header id="sidebar-header">
+            {% if item_count %}
+              <div class="text" style="margin-top:10px">My Cart ({{item_count}} items)</div>
+            {% else %}
+              <div class="text" style="margin-top:10px">My Cart</div>
+            {% endif %}
+            <div id="close-sidebar-cross" onClick="closeSideBar()">X</div>
+          </header>
+          <div style="background-color: #ffffff;">
+            <div class="flex-container-space-between">
+              <div>Sub total</div>
+              <div>&#8377; {{ total_cost }}</div>
+            </div>
+            <div class="flex-container-space-between">
+              <div>Delivery charges</div>
+              <div>&#8377; {{ delivery_cost }}</div>
+            </div>
+            <hr />
+            <div class="flex-container-space-between">
+              <div>Total Savings</div>
+              <div>&#8377; {{ savings }}</div>
+            </div>
+          </div>
         </div>
-        <div id="cart-checkout-element">
+        <div>
+          {% for item in item_count %}
+            <div style="background-color: #ffffff; height:70px; margin:10px; padding:10px;">
+              <img class="item-image" src="{{ item.image_url }}" />
+              <div style="margin-left:50px">{{ item.name }}</div>
+              <div style="margin-left:50px">{{ item.variation }}</div>
+              <div class="flex-container-space-between" style="margin-left:50px">
+                <div class="flex-container-space-between" style="width:50%;">
+                  <div class="add-remove-cart-button">-</div>
+                  <div>{{ item.quantity }}</div>
+                  <div class="add-remove-cart-button">+</div>
+                  <div>X</div>
+                  <div>{{ item.price }}</div>
+                </div>
+                <div>&#8377; {{ item.total_cost }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        <div>
+        <footer id="cart-checkout-element">
           <div class="text">Proceed to Checkout</div>
           <div class="text">{{ amount }}</div>
-        <div>
+        <footer>
       </div>
     {% endblock sidebar %}
     <script type="text/javascript" src="{% static 'javascript/base.js' %}"></script>

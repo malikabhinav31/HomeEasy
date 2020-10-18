@@ -76,10 +76,6 @@ body{
   width: 0px;
   top:0; bottom:0; right:0;
   overflow-x: hidden;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-
 }
 
 #sidebar-header{
@@ -107,4 +103,29 @@ body{
   margin: 10px;
   border-radius: 5px;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 95%
+}
+
+.flex-container-space-between{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.item-image{
+  float: left;
+  height: 50px;
+  width: 35px;
+}
+
+.add-remove-cart-button{
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid #e96125;
+  font-size: 10px;
+  padding: 2px;
+  width: 15px;
+  text-align: center;
 }

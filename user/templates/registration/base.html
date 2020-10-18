@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/registration.css' %}"></link>
+
+<div class="flex-container-column">
+<img src="{% static 'logo.png' %}" id="logo"/>
+
+{% block content %}
+  <div>
+    {% block form %}
+      <div class="form-container">
+        <h2 align="center">{{ action }}</h2>
+        {% block form-header %}
+        {% endblock form-header %}
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="{{ action }}" class="form-input"/>
+        </form>
+        {% block form-footer %}
+        {% endblock form-footer %}
+      </div>
+    {% endblock form %}
+    {% block other %}
+    {% endblock other %}
+  </div>
+{% endblock content %}
+<div>
